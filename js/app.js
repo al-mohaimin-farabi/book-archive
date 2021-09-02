@@ -81,15 +81,15 @@ const displaySearchResult = (books) => {
             div.classList.add('col');
             div.innerHTML = `
             <div class="card h-100">
-                <div class="card-body">
+                <div class="card-body bg-light">
                 <img height="280" src="${images()}" class="card-img-top mb-3" alt="This image is not found">
                     <h5 class="card-title"><span class="text-success">Name: </span>${title}</h5>
-                    <p><span class="text-success">Writer: </span>${writer}</p>
-                    <p><span class="text-success">First Published In: </span>${year}</p>
-                    <p><span class="text-success">Published Place: </span>${publish[0]}</p>
-                    <p><span class="text-success">Publisher: </span>${publisher[0]}</p>
-                    <p><span class="text-success">Language: </span>${language}</p>
-                    <p><span class="text-success">Book Subject: </span>${subject[0]}</p>
+                    <p class="card-text"><span class="text-success">Writer: </span>${writer}</p>
+                    <p class="card-text"><span class="text-success">First Published In: </span>${year}</p>
+                    <p class="card-text"><span class="text-success">Published Place: </span>${publish[0]}</p>
+                    <p class="card-text"><span class="text-success">Publisher: </span>${publisher[0]}</p>
+                    <p class="card-text"><span class="text-success">Language: </span>${language}</p>
+                    <p class="card-text"><span class="text-success">Book Subject: </span>${subject[0]}</p>
 
                 </div>
             </div>`;

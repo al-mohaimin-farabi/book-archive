@@ -1,9 +1,13 @@
+*{
+    font-family: 'Poppins', sans-serif;;
+    font-weight: 600;
+}
 .search-box:focus{
     box-shadow: unset;
 }
 .search-btn:focus-within{
-    background-color: rgb(216, 105, 105);
-    color: #fff;
+    background-color: #198754;
+    color: rgb(255, 255, 255);
 }
 /* .card-animation{
     transition: all 2s;
