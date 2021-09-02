@@ -1,0 +1,7 @@
+.search-box:focus{
+    box-shadow: unset;
+}
+.search-btn:focus-within{
+    background-color: rgb(34, 37, 37);
+    color: #fff;
+}
