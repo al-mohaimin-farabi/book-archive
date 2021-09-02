@@ -1,16 +1,23 @@
 const inputedText = document.getElementById('input-field');
 const srarchBtn = document.getElementById('search-btn');
 const Found = document.getElementById('found');
+const searchResult = document.getElementById('search-result');
+const spinner = document.getElementById("spinner");
 
 srarchBtn.addEventListener('click', async() =>{
     const searchText = inputedText.value;
+    searchResult.textContent = '';
+    Found.innerHTML = 'Searching';
+    Found.classList.remove('d-none');
     if(searchText ===''){
         inputedText.value = '';
-        alert('Search field can not me emty')
-        Found.innerText = "Please Search Something";
+        searchResult.textContent = '';
+        alert('Search field can not be emty')
+        Found.innerHTML = "Please Search Something &#128533";
         Found.classList.remove('d-none');
     }
     else{
+        spinner.classList.remove('d-none');
         const url = `https://openlibrary.org/search.json?q=${searchText}`;
         const res = await fetch(url);
         const data = await res.json();
@@ -19,27 +26,21 @@ srarchBtn.addEventListener('click', async() =>{
     }
 });
 
-// const obj = {
-// 	name:'x'
-        
-// }
 
-// obj.name?obj.name:'not fount'
-// obj.yera?obj.year:' not found'
+
 const displaySearchResult = (books) => {
-
-    const searchResult = document.getElementById('search-result');
+    const usertSearchText = document.getElementById('input-field');
+    const searchedWith = usertSearchText.value;
     searchResult.textContent = '';
     if(books.numFound === 0){
         inputedText.value = '';
-        Found.innerText = "Sorry, Can't Find Anything For You";
+        Found.innerHTML = `Sorry, Can't Find Anything For You with the word "${searchedWith}" &#128532`;
         Found.classList.remove('d-none');
+        spinner.classList.add('d-none');
         // console.log('found nothing');
     }
     else{
-        const usertSearchText = document.getElementById('input-field');
-        const searchedWith = usertSearchText.value;
-        Found.innerText = `We Found ${books.numFound} Result For You Containing ${searchedWith}. Showing ${books.docs.length} Result Now`;
+        Found.innerHTML = `We Found <span class="text-success">${books.numFound}</span> Result For You Containing <span class="text-success"> ${searchedWith}</span>. Showing <span class="text-success">${books.docs.length}</span> Result Now`;
         inputedText.value = '';
         Found.classList.remove('d-none');
         
@@ -51,7 +52,7 @@ const displaySearchResult = (books) => {
             const title = book?.title?book.title:'not found';
             const writer = book?.author_name?book.author_name:'not found';
             const publisher = book?.publisher?book.publisher: 'not found';
-            console.log(publisher);
+            // console.log(publisher);
             const year = book?.first_publish_year?book.first_publish_year:'not found';
             const publish = book?.publish_place?book.publish_place:'not found';
             const language = book?.language?book.language:'not found';
@@ -77,9 +78,9 @@ const displaySearchResult = (books) => {
                 <div class="card-body">
                 <img height="280" src="${images()}" class="card-img-top mb-3" alt="This image is not found">
                     <h5 class="card-title"><span class="text-success">Name: </span>${title}</h5>
-                    <p><span class="text-success">Writer: </span>${writer}</p>
+                    <p><span class="text-success">Writer: </span>${writer[0]}</p>
                     <p><span class="text-success">First Published In: </span>${year}</p>
-                    <p><span class="text-success">Published Place: </span>${publish}</p>
+                    <p><span class="text-success">Published Place: </span>${publish[0]}</p>
                     <p><span class="text-success">Publisher: </span>${publisher[0]}</p>
                     <p><span class="text-success">Language: </span>${language}</p>
                     <p><span class="text-success">Book Subject: </span>${subject}</p>
@@ -87,6 +88,7 @@ const displaySearchResult = (books) => {
                 </div>
             </div>`;
             searchResult.appendChild(div);
+            spinner.classList.add('d-none');
         });
     }
 };

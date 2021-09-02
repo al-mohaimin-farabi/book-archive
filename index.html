@@ -15,6 +15,7 @@
     </header>
     
     <main class="container">
+        <!-- user input area -->
         <section class="w-75 mx-auto my-3">
             <div class="input-group mb-3">
                 <input type="text" class="form-control search-box" placeholder="Enter the book name"id="input-field">
@@ -23,9 +24,14 @@
         </section>
 
         <!-- found or not?-->
-        <section class="text-center">
-            <p class="fs-4 d-none" id="found"></p>
+        <section class="text-center mt-2 mb-4">
+            <p class="fs-4 d-none " id="found"></p>
         </section>
+
+        <!-- spinner -->
+          <div class="text-center d-none" type="button" id="spinner">
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+          </div>
 
         <!-- show result -->
         <section class="w-100">
