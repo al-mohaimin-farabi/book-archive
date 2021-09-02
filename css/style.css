@@ -2,7 +2,7 @@
     box-shadow: unset;
 }
 .search-btn:focus-within{
-    background-color: rgb(34, 37, 37);
+    background-color: rgb(216, 105, 105);
     color: #fff;
 }
 /* .card-animation{

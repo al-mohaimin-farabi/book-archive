@@ -1,6 +1,7 @@
 const inputedText = document.getElementById('input-field');
 const srarchBtn = document.getElementById('search-btn');
 const Found = document.getElementById('found');
+Found.style.color= 'white'
 const searchResult = document.getElementById('search-result');
 const spinner = document.getElementById("spinner");
 
@@ -10,7 +11,6 @@ srarchBtn.addEventListener('click', async() =>{
     Found.innerHTML = 'Searching';
     Found.classList.remove('d-none');
     if(searchText ===''){
-        inputedText.value = '';
         searchResult.textContent = '';
         alert('Search field can not be emty')
         Found.innerHTML = "Please Search Something &#128533";
@@ -26,12 +26,9 @@ srarchBtn.addEventListener('click', async() =>{
     }
 });
 
-
-
 const displaySearchResult = (books) => {
     const usertSearchText = document.getElementById('input-field');
     const searchedWith = usertSearchText.value;
-    searchResult.textContent = '';
     if(books.numFound === 0){
         inputedText.value = '';
         Found.innerHTML = `Sorry, Can't Find Anything For You with the word "${searchedWith}" &#128532`;
@@ -51,7 +48,7 @@ const displaySearchResult = (books) => {
 
             const title = book?.title?book.title:'not found';
             const writer = book?.author_name?book.author_name:'not found';
-            const publisher = book?.publisher?book.publisher: 'not found';
+            const publisher = book?.publisher?book.publisher:'not found';
             // console.log(publisher);
             const year = book?.first_publish_year?book.first_publish_year:'not found';
             const publish = book?.publish_place?book.publish_place:'not found';
@@ -78,10 +75,10 @@ const displaySearchResult = (books) => {
                 <div class="card-body">
                 <img height="280" src="${images()}" class="card-img-top mb-3" alt="This image is not found">
                     <h5 class="card-title"><span class="text-success">Name: </span>${title}</h5>
-                    <p><span class="text-success">Writer: </span>${writer[0]}</p>
+                    <p><span class="text-success">Writer: </span>${writer}</p>
                     <p><span class="text-success">First Published In: </span>${year}</p>
-                    <p><span class="text-success">Published Place: </span>${publish[0]}</p>
-                    <p><span class="text-success">Publisher: </span>${publisher[0]}</p>
+                    <p><span class="text-success">Published Place: </span>${publish}</p>
+                    <p><span class="text-success">Publisher: </span>${publisher}</p>
                     <p><span class="text-success">Language: </span>${language}</p>
                     <p><span class="text-success">Book Subject: </span>${subject}</p>
 
