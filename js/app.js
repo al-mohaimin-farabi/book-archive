@@ -46,14 +46,14 @@ const displaySearchResult = (books) => {
            
             book.forEach(book =>{
 
-            const title = book?.title?book.title:'not found';
-            const writer = book?.author_name?book.author_name:'not found';
-            const publisher = book?.publisher?book.publisher:'not found';
+            const title = book?.title?book.title:['not found'];
+            const writer = book?.author_name?book.author_name:['not found'];
+            const publisher = book?.publisher?book.publisher:['not found'];
             // console.log(publisher);
-            const year = book?.first_publish_year?book.first_publish_year:'not found';
-            const publish = book?.publish_place?book.publish_place:'not found';
-            const language = book?.language?book.language:'not found';
-            const subject = book?.subject?book.subject:'not found';
+            const year = book?.first_publish_year?book.first_publish_year:['not found'];
+            const publish = book?.publish_place?book.publish_place:['not found'];
+            const language = book?.language?book.language:['not found'];
+            const subject = book?.subject?book.subject:['not found'];
             
     
             const images = () => {
@@ -77,10 +77,10 @@ const displaySearchResult = (books) => {
                     <h5 class="card-title"><span class="text-success">Name: </span>${title}</h5>
                     <p><span class="text-success">Writer: </span>${writer}</p>
                     <p><span class="text-success">First Published In: </span>${year}</p>
-                    <p><span class="text-success">Published Place: </span>${publish}</p>
-                    <p><span class="text-success">Publisher: </span>${publisher}</p>
+                    <p><span class="text-success">Published Place: </span>${publish[0]}</p>
+                    <p><span class="text-success">Publisher: </span>${publisher[0]}</p>
                     <p><span class="text-success">Language: </span>${language}</p>
-                    <p><span class="text-success">Book Subject: </span>${subject}</p>
+                    <p><span class="text-success">Book Subject: </span>${subject[0]}</p>
 
                 </div>
             </div>`;
